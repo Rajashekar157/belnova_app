@@ -1,53 +1,51 @@
-// import React from "react";
-// import Navbar from "./components/Navbar";
-// import Hero from "./components/Hero";
-// // import "./App.css";
-
-// const App = () => {
-//   return (
-//     <div>
-//       <Navbar />
-//       <Hero />
-//     </div>
-//   );
-// };
-
-
-
-
-
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import AboutUs from "./components/about_us";
+import About from "./pages/About";
 import Footer from "./components/footer";
+import Industries from "./pages/Industries";
+import Careers from "./pages/Careers";
+import Contact from "./pages/Contact";
+import Services from "./pages/Services";
+import WhyBelnova from "./pages/WhyBelnova";
+const Home = () => (
+  <>
+    <Navbar />
+    <Hero />
+  </>
+);
 
 const App = () => {
   return (
     <Router>
+      {/* Navbar on every page */}
+      <Navbar />
 
-      {/* Navbar only on Home */}
       <Routes>
-        <Route 
-          path="/" 
-          element={
-            <>
-              <Navbar />
-              <Hero />
-            </>
-          } 
-        />
-
-        {/* About page (no navbar) */}
-        <Route path="/about" element={<AboutUs />} />
-        
+        <Route path="/" element={<Hero />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/industries" element={<Industries />} />
+        <Route path="/careers" element={<Careers />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
 
-      {/* Footer for all pages */}
-      <Footer />
+      {/* Footer on every page */}
+      <Routes>
+        <Route path="/" element={<Home />} />
 
+        {/* About Page */}
+        <Route path="/about" element={<About />} />
+
+        {/* Services Page */} 
+       <Route path="/services" element={<Services />} />
+
+        {/* Why Belnova Page */}
+        <Route path="/why-belnova" element={<WhyBelnova />} />
+      </Routes>
+
+      <Footer />
     </Router>
   );
 };
